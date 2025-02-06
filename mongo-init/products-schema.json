@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "required": [
+        "name",
+        "price",
+        "description",
+        "category",
+        "qty"
+    ],
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "price": {
+            "type": "number"
+        },
+        "description": {
+            "type": "string"
+        },
+        "category": {
+            "type": "string"
+        },
+        "qty": {
+            "type": "integer"
+        }
+    }
+}

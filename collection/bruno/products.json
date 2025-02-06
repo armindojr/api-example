@@ -1,0 +1,159 @@
+{
+  "name": "Products",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Read all",
+      "seq": 3,
+      "request": {
+        "url": "http://localhost:3001/v1/products",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Read by id",
+      "seq": 2,
+      "request": {
+        "url": "http://localhost:3001/v1/products/:id",
+        "method": "GET",
+        "headers": [],
+        "params": [
+          {
+            "name": "id",
+            "value": "67a5052c0e1b30ea04544ca5",
+            "type": "path",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Update",
+      "seq": 4,
+      "request": {
+        "url": "http://localhost:3001/v1/products/:id",
+        "method": "PUT",
+        "headers": [],
+        "params": [
+          {
+            "name": "id",
+            "value": "67a5052c0e1b30ea04544ca5",
+            "type": "path",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"_id\": \"67a4fb58f09d415a72544ca7\",\n  \"name\": \"Smartphone Samsung Galaxy A53\",\n  \"price\": 2999.85,\n  \"description\": \"Smartphone moderno com câmera de 64 MP, processador octa-core e bateria de 5000 mAh.\",\n  \"category\": \"Eletrônicos\",\n  \"qty\": 12\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Delete",
+      "seq": 5,
+      "request": {
+        "url": "http://localhost:3001/v1/products/:id",
+        "method": "DELETE",
+        "headers": [],
+        "params": [
+          {
+            "name": "id",
+            "value": "67a50acd436fea369c08b260",
+            "type": "path",
+            "enabled": true
+          }
+        ],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Create",
+      "seq": 1,
+      "request": {
+        "url": "http://localhost:3001/v1/products",
+        "method": "POST",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"name\": \"Smartphone Samsung Galaxy S25\",\n  \"price\": 6299.20,\n  \"description\":\n      \"Smartphone moderno com câmera de 64 MP, processador octa-core e bateria de 5000 mAh.\",\n  \"category\": \"Eletrônicos\",\n  \"qty\": 10\n}",
+          "formUrlEncoded": [],
+          "multipartForm": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "none"
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "Products",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
