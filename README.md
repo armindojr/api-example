@@ -12,8 +12,6 @@ The primary motivation behind this project is to develop skills in load test aut
 
 To use this project effectively, you will need the following credentials:
 
-- **MongoDB Connection String**: Required to connect to your MongoDB database.
-- **API Keys**: If external APIs are being used, appropriate API keys are necessary.
 - **Environment Variables**: As specified in `.env.example`, ensure these variables are set up correctly for your environment.
 
 This information is crucial for setting up and running the application smoothly.
@@ -45,7 +43,7 @@ This information is crucial for setting up and running the application smoothly.
 3. Set up environment variables:
 
    - Make a copy of `.env.example` and rename it to `.env`.
-   - Add your credentials from [restful-booker](https://restful-booker.herokuapp.com/apidoc/index.html#api-Auth-CreateToken).
+   - Add your passwords on `MONGO_ROOT_PASSWORD` and `MONGOEXPRESS_PASSWORD` variables
 
 4. Run the tests:
    ```sh
@@ -95,4 +93,3 @@ This project enforces the following standards:
 
 - JavaScript (ES6+).
 - Code formatting adheres to ESLint rules.
-- Tests should cover both UI and API endpoints.
