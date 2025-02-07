@@ -10,9 +10,6 @@ import {
 
 const router = express.Router();
 
-// Middleware de validação personalizado
-router.use(validateProduct);
-
 // Listar todos os produtos
 router.get('/', getAllProducts);
 
@@ -20,10 +17,10 @@ router.get('/', getAllProducts);
 router.get('/:id', getProductById);
 
 // Criar um novo produto
-router.post('/', createProduct);
+router.post('/', validateProduct, createProduct);
 
 // Atualizar um produto
-router.put('/:id', updateProduct);
+router.put('/:id', validateProduct, updateProduct);
 
 // Deletar um produto
 router.delete('/:id', deleteProduct);

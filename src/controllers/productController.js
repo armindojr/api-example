@@ -20,24 +20,28 @@ const getProductById = async (req, res) => {
   }
 };
 
-const createProduct = async (req, res) => {
-  const newProduct = new Product(req.body);
-  const savedProduct = await newProduct.save();
+const createProduct = async (req, res, next) => {
+  try {
+    const newProduct = new Product(req.body);
+    const savedProduct = await newProduct.save();
 
-  if (!savedProduct) {
-    res.status(404).json({ error: 'Produto não foi criado!' });
-  } else {
     res.status(201).json(savedProduct);
+  } catch (error) {
+    next(error);
   }
 };
 
-const updateProduct = async (req, res) => {
-  const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+const updateProduct = async (req, res, next) => {
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
-  if (!updatedProduct) {
-    res.status(404).json({ error: 'Produto não encontrado!' });
-  } else {
-    res.status(200).json(updatedProduct);
+    if (!updatedProduct) {
+      res.status(404).json({ error: 'Produto não encontrado!' });
+    } else {
+      res.status(200).json(updatedProduct);
+    }
+  } catch (error) {
+    next(error);
   }
 };
 

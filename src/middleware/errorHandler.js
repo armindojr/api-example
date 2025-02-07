@@ -1,9 +1,17 @@
-// eslint-disable-next-line no-unused-vars
 export default function errorHandler(err, req, res, next) {
-  console.error(err.stack);
+  console.error('Error:', err);
 
-  res.status(500).json({
-    error: 'Ocorreu um erro interno no servidor',
-    message: err.message || 'Algo deu errado!'
+  // Check for duplicate key error
+  if (err.code === 11000 || err.name === 'MongoServerError') {
+    return res.status(409).json({
+      message: 'Product already exists. Please use a different name or ID.'
+    });
+  }
+
+  // Handle other types of errors
+  res.status(err.statusCode || 500).json({
+    error: err.message || 'Something went wrong!'
   });
+
+  next();
 }
