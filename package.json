@@ -1,23 +1,24 @@
 {
-  "name": "k6-medium",
+  "name": "api-example",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "docker-compose up -d; node ./src/index.js"
+    "start": "docker-compose up -d; node ./src/index.js",
+    "lint": "npx eslint -c ./eslint.config.mjs",
+    "lint:fix": "npx eslint -c ./eslint.config.mjs --fix"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/armindojr/k6-medium.git"
+    "url": "git+https://github.com/armindojr/api-example.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/armindojr/k6-medium/issues"
+    "url": "https://github.com/armindojr/api-example/issues"
   },
-  "homepage": "https://github.com/armindojr/k6-medium#readme",
+  "homepage": "https://github.com/armindojr/api-example#readme",
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
@@ -25,5 +26,10 @@
     "express": "^4.21.2",
     "express-validator": "^7.2.1",
     "mongoose": "^8.10.0"
+  },
+  "devDependencies": {
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^20.14.8",
+    "eslint": "^9.19.0"
   }
 }
