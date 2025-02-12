@@ -1,17 +1,24 @@
+networks:
+  common_network:
+
 services:
   mongo:
     image: mongo
+    networks:
+      - common_network
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
       MONGO_INITDB_DATABASE: ${DB_NAME}
     ports:
-      - "27017:27017"
+      - 27017:27017
     volumes:
       - ./mongo-init/:/docker-entrypoint-initdb.d/:ro
 
   mongo-express:
     image: mongo-express
+    networks:
+      - common_network
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_ROOT_USER}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_ROOT_PASSWORD}
@@ -23,4 +30,26 @@ services:
       mongo:
         condition: service_started
     ports:
-      - "8888:8081"
+      - 8888:8081
+
+  backend:
+    image: node:20.18.3-bullseye-slim
+    command: bash -c "npm i && npm start"
+    networks:
+      - common_network
+    environment:
+      - MONGO_ROOT_USER=${MONGO_ROOT_USER}
+      - MONGO_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - DB_URI=mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASSWORD}@mongo:27017/
+      - DB_NAME=${DB_NAME}
+      - MONGOEXPRESS_LOGIN=${MONGOEXPRESS_LOGIN}
+      - MONGOEXPRESS_PASSWORD=${MONGOEXPRESS_PASSWORD}
+    ports:
+      - 3001:3001
+    volumes:
+      - ./src:/src:ro
+      - ./package.json:/package.json
+      - ./package-lock.json:/package-lock.json
+    depends_on:
+      mongo:
+        condition: service_started

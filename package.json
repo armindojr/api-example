@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "docker-compose up -d; node ./src/index.js",
+    "start": "node ./src/index.js",
     "lint": "npx eslint -c ./eslint.config.mjs",
     "lint:fix": "npx eslint -c ./eslint.config.mjs --fix"
   },

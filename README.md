@@ -34,21 +34,18 @@ This information is crucial for setting up and running the application smoothly.
    cd api-example
    ```
 
-2. Install dependencies:
-
-   ```sh
-   npm i
-   ```
-
-3. Set up environment variables:
+2. Set up environment variables:
 
    - Make a copy of `.env.example` and rename it to `.env`.
    - Add your passwords on `MONGO_ROOT_PASSWORD` and `MONGOEXPRESS_PASSWORD` variables
 
-4. Run the tests:
+3. Run all containers:
+
    ```sh
-   npm run start
+   docker compose up -d
    ```
+
+4. Your API will be running on [localhost:3001](http://localhost:3001)
 
 ## Project Structure
 
