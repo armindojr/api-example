@@ -51,5 +51,4 @@ services:
       - ./package.json:/package.json
       - ./package-lock.json:/package-lock.json
     depends_on:
-      mongo:
-        condition: service_started
+      - mongo
